@@ -14,6 +14,8 @@ prc.on('close', function (code) {
 });
 
 
+
+
 function handler (req, res) {
   if(req.url === "/"){
     fs.readFile(__dirname + '/index.html',
@@ -66,26 +68,14 @@ wss.on('connection', function(ws) {
 prc.stdout.on('data', function (data) {
 //	kstream.write(new Buffer(data).toString('base64'));
 
+	console.log("type: " + typeof stdout);
 	console.log('stdout data');
-	console.log(data);
-	var buffer = new Buffer(data,"binary");
-	console.log("buffer");
-	console.log(buffer);
-	fs.writeFile("./tmp/arghhhh.jpg", new Buffer(data, "binary"), function(err) {});
-	fs.writeFile("./tmp/test.jpg", data, function(err) {
-    if(err) {
-        console.log(err);
-    } else {
-        console.log("The file was saved!");
-    }
-	});
-	fs.writeFile("./tmp/test_buffer.jpg", buffer, function(err) {
-    if(err) {
-        console.log(err);
-    } else {
-        console.log("file saved!");
-    }
-	});
+
+	fs.writeFile("./tmp/test.jpg", data, function(err) {});
+
+	
+	
+	
 	});
 	
 	//console.log(new Buffer(data).toString('base64'));
